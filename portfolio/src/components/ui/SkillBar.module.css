@@ -1,0 +1,87 @@
+.skillBar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skillHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.skillInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skillName {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+}
+
+.skillCategory {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.skillLevel {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  min-width: 40px;
+  text-align: right;
+  transition: all 0.1s;
+}
+
+.track {
+  position: relative;
+  height: 6px;
+  border-radius: 3px;
+  overflow: visible;
+}
+
+.trackBg {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+}
+
+.fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glowDot {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: left 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill,
+  .glowDot {
+    transition: none;
+  }
+}

@@ -1,0 +1,95 @@
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glitch.active::before {
+  opacity: 0.8;
+  color: var(--accent-cyan);
+  clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+  transform: translateX(-3px);
+  animation: glitchBefore 0.4s steps(2) forwards;
+}
+
+.glitch.active::after {
+  opacity: 0.8;
+  color: var(--accent-purple);
+  clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+  transform: translateX(3px);
+  animation: glitchAfter 0.4s steps(2) forwards;
+}
+
+@keyframes glitchBefore {
+  0% {
+    clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%);
+    transform: translateX(-4px);
+  }
+  20% {
+    clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%);
+    transform: translateX(4px);
+  }
+  40% {
+    clip-path: polygon(0 40%, 100% 40%, 100% 55%, 0 55%);
+    transform: translateX(-2px);
+  }
+  60% {
+    clip-path: polygon(0 5%, 100% 5%, 100% 20%, 0 20%);
+    transform: translateX(2px);
+  }
+  80% {
+    clip-path: polygon(0 75%, 100% 75%, 100% 90%, 0 90%);
+    transform: translateX(-4px);
+  }
+  100% {
+    clip-path: none;
+    transform: translateX(0);
+    opacity: 0;
+  }
+}
+
+@keyframes glitchAfter {
+  0% {
+    clip-path: polygon(0 70%, 100% 70%, 100% 85%, 0 85%);
+    transform: translateX(4px);
+  }
+  20% {
+    clip-path: polygon(0 10%, 100% 10%, 100% 25%, 0 25%);
+    transform: translateX(-4px);
+  }
+  40% {
+    clip-path: polygon(0 50%, 100% 50%, 100% 65%, 0 65%);
+    transform: translateX(2px);
+  }
+  60% {
+    clip-path: polygon(0 85%, 100% 85%, 100% 100%, 0 100%);
+    transform: translateX(-2px);
+  }
+  80% {
+    clip-path: polygon(0 30%, 100% 30%, 100% 45%, 0 45%);
+    transform: translateX(4px);
+  }
+  100% {
+    clip-path: none;
+    transform: translateX(0);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch::before,
+  .glitch::after {
+    display: none;
+  }
+}
