@@ -1,0 +1,126 @@
+.footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+  padding: var(--space-3xl) 0 var(--space-xl);
+}
+
+.inner {}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  text-decoration: none;
+}
+
+.logoText {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.logoDot {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--accent-cyan);
+}
+
+.navLinks {
+  display: flex;
+  gap: var(--space-xl);
+  list-style: none;
+}
+
+.navLink {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color var(--transition-normal);
+}
+
+.navLink:hover {
+  color: var(--accent-cyan);
+}
+
+.socials {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  background: var(--bg-card);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+}
+
+.socialIcon:hover {
+  color: var(--accent-cyan);
+  border-color: var(--border-cyan);
+  background: var(--accent-cyan-dim);
+  box-shadow: var(--glow-cyan);
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-dim), transparent);
+  margin-bottom: var(--space-xl);
+}
+
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.copyright {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.built {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.builtHighlight {
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .topRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navLinks {
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .bottomRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
