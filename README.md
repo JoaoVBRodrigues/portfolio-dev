@@ -2,7 +2,7 @@
 
 A modern, gamified personal portfolio built with **Next.js 15** (App Router) and **TypeScript**. Designed with a dark industrial / cyber-HUD aesthetic, featuring animated skill bars, typing effects, glitch text, and real GitHub project data.
 
-> 📁 Project source is located in the [`portfolio/`](./portfolio) directory.
+**Live:** _coming soon_
 
 ---
 
@@ -46,13 +46,83 @@ A modern, gamified personal portfolio built with **Next.js 15** (App Router) and
 
 ## Getting Started
 
+### Prerequisites
+
+- Node.js 20+
+- npm 10+
+
+### Installation
+
 ```bash
+# Clone the repository
+git clone https://github.com/JoaoVBRodrigues/portfolio.git
 cd portfolio
+
+# Install dependencies
 npm install
+
+# Start the development server
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Build for production
+
+```bash
+npm run build
+npm run start
+```
+
+---
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx        # Root layout, metadata, fonts
+│   ├── page.tsx          # Main page assembly
+│   └── globals.css       # Design tokens, reset, utilities
+├── components/
+│   ├── layout/
+│   │   ├── Navbar.tsx
+│   │   └── Footer.tsx
+│   ├── sections/
+│   │   ├── Hero.tsx
+│   │   ├── About.tsx
+│   │   ├── Services.tsx
+│   │   ├── Projects.tsx
+│   │   └── Contact.tsx
+│   └── ui/
+│       ├── GlitchText.tsx
+│       ├── SkillBar.tsx
+│       ├── AnimatedCounter.tsx
+│       └── BrandIcons.tsx
+└── data/
+    ├── projects.ts
+    └── services.ts
+```
+
+---
+
+## Design System
+
+The portfolio uses a custom design system defined in `globals.css` via CSS custom properties.
+
+**Color palette:**
+
+```css
+--bg-primary:    #0a0a0f   /* near-black background   */
+--accent-cyan:   #00d4ff   /* primary HUD color       */
+--accent-purple: #8b5cf6   /* secondary accent        */
+--accent-green:  #39ff14   /* status / availability   */
+--accent-orange: #ff6b35   /* warning / highlight     */
+```
+
+**Typography:**
+- **Display** — [Orbitron](https://fonts.google.com/specimen/Orbitron) — headings, logo, numbers
+- **Body** — [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) — body text, labels, code
 
 ---
 
@@ -66,4 +136,4 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## License
 
-This project is open source and available under the [MIT License](./portfolio/LICENSE).
+This project is open source and available under the [MIT License](LICENSE).
