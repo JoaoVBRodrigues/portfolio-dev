@@ -1,7 +1,0 @@
-{
-  "buildCommand": "npm --prefix portfolio run build",
-  "outputDirectory": "portfolio/.next",
-  "installCommand": "npm --prefix portfolio install",
-  "devCommand": "npm --prefix portfolio run dev",
-  "framework": "nextjs"
-}
