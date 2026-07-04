@@ -67,6 +67,23 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+### E-mail Setup (Contact Form)
+
+The contact form uses **Resend** to send emails securely from a Next.js API route.
+
+1. Sign up for a free account at [Resend](https://resend.com).
+2. Create an API Key in the Resend dashboard.
+3. Create a local environment file:
+   ```bash
+   cp .env.example .env.local
+   ```
+4. Paste your Resend API Key into `.env.local`:
+   ```env
+   RESEND_API_KEY=re_your_api_key_here
+   ```
+
+*Note: In the free tier, Resend allows sending emails to your own registered email address (e.g. `joaovictor.brodr@gmail.com`). If the API key is not configured, the form automatically falls back to opening a `mailto:` link so the contact functionality is never broken.*
+
 ### Build for production
 
 ```bash

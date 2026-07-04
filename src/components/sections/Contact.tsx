@@ -29,18 +29,42 @@ export default function Contact() {
     e.preventDefault()
     setStatus({ type: 'loading', message: 'Transmitindo mensagem...' })
 
-    // Simulate async submission (mailto fallback)
-    await new Promise((r) => setTimeout(r, 1200))
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      })
 
-    // Build mailto link as fallback
-    const subject = encodeURIComponent(form.subject || 'Contato via portfólio')
-    const body = encodeURIComponent(
-      `Nome: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
-    )
-    window.location.href = `mailto:joaovictor.brodr@gmail.com?subject=${subject}&body=${body}`
+      const data = await response.json()
 
-    setStatus({ type: 'success', message: 'Mensagem transmitida com sucesso! Entrarei em contato em breve.' })
-    setForm({ name: '', email: '', subject: '', message: '' })
+      if (!response.ok) {
+        throw new Error(data.error || 'Erro na resposta do servidor.')
+      }
+
+      setStatus({
+        type: 'success',
+        message: 'Mensagem transmitida com sucesso! Entrarei em contato em breve.'
+      })
+      setForm({ name: '', email: '', subject: '', message: '' })
+    } catch (err: unknown) {
+      console.warn('API submission failed. Falling back to mailto...', err)
+
+      // Fallback: Mailto redirect if API fails or env key is missing
+      const subject = encodeURIComponent(form.subject || 'Contato via portfólio')
+      const body = encodeURIComponent(
+        `Nome: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
+      )
+      window.location.href = `mailto:joaovictor.brodr@gmail.com?subject=${subject}&body=${body}`
+
+      setStatus({
+        type: 'success',
+        message: 'Tentativa de envio via API falhou. Redirecionando para o seu cliente de email...'
+      })
+      setForm({ name: '', email: '', subject: '', message: '' })
+    }
   }
 
   return (
